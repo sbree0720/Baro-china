@@ -1,4 +1,3 @@
-cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -35,6 +34,7 @@ cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
   --white:#FFFFFF;
   --red:#E03131;
   --green:#12B886;
+  --purple:#6741D9;
   --r:20px;
   --r-sm:14px;
   --shadow:0 2px 16px rgba(0,0,0,0.07);
@@ -131,21 +131,17 @@ nav{
 .app-rank{position:absolute;top:14px;right:16px;font-size:0.7rem;font-weight:800;color:var(--g4)}
 .app-rank.top3{color:var(--blue)}
 
-/* ── APP ICON: real image ── */
+/* ── APP ICON ── */
 .app-icon-wrap{
   width:60px;height:60px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;overflow:hidden;background:var(--g6);
+  font-size:1.875rem;
 }
 .app-icon-wrap img{
   width:60px;height:60px;border-radius:14px;
   object-fit:cover;display:block;
 }
-/* fallback emoji shown when img fails */
-.app-icon-wrap .icon-fallback{
-  font-size:1.75rem;line-height:1;display:none;
-}
-.app-icon-wrap img.error + .icon-fallback{display:block}
 
 .app-body{flex:1;min-width:0}
 .app-name{font-size:1rem;font-weight:800;color:var(--dark);margin-bottom:4px}
@@ -154,7 +150,7 @@ nav{
 .tag-map{background:#FFF3E0;color:#E67700}
 .tag-trans{background:#F0FFF4;color:#2F9E44}
 .tag-comm{background:var(--blue-light);color:var(--blue)}
-.tag-taxi{background:#F3F0FF;color:#6741D9}
+.tag-taxi{background:#F3F0FF;color:var(--purple)}
 .tag-food{background:#FFF0F9;color:#C2255C}
 .tag-travel{background:#E6F9F1;color:#0CA678}
 .app-desc{font-size:0.875rem;color:var(--g2);line-height:1.55;margin-bottom:14px}
@@ -165,6 +161,8 @@ nav{
   border-left:3px solid var(--blue);
 }
 .app-why strong{color:var(--blue);font-size:0.75rem;display:block;margin-bottom:2px}
+
+/* 다운로드 버튼 */
 .app-dl-btn{
   background:var(--dark);color:#fff;border:none;border-radius:10px;
   padding:12px 0;font-size:0.9375rem;font-weight:700;cursor:pointer;
@@ -174,6 +172,17 @@ nav{
 }
 .app-dl-btn:hover{background:var(--g1)}
 .app-dl-btn:active{transform:scale(0.98)}
+
+/* 디디 전용: 별도설치 불필요 안내 배지 */
+.didi-notice{
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#F3F0FF,#EEF4FF);
+  border:1.5px solid #D0C8FF;border-radius:10px;
+  padding:12px 14px;
+}
+.didi-notice-icon{font-size:1.25rem;flex-shrink:0}
+.didi-notice-text{font-size:0.8125rem;font-weight:700;color:var(--purple);line-height:1.45}
+.didi-notice-text span{display:block;font-weight:400;color:var(--g2);margin-top:2px}
 
 /* ── DOWNLOAD MODAL ── */
 .modal-overlay{
@@ -192,6 +201,8 @@ nav{
 .modal-app-icon{
   width:60px;height:60px;border-radius:14px;overflow:hidden;
   background:var(--g6);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.875rem;
 }
 .modal-app-icon img{width:60px;height:60px;object-fit:cover;border-radius:14px;display:block}
 .modal-app-name{font-size:1.125rem;font-weight:800}
@@ -201,7 +212,7 @@ nav{
   display:flex;align-items:center;justify-content:center;gap:10px;
   padding:18px;border-radius:14px;font-size:1rem;font-weight:700;
   cursor:pointer;font-family:inherit;border:none;text-decoration:none;
-  transition:background .15s;touch-action:manipulation;
+  transition:background .15s,opacity .15s;touch-action:manipulation;
 }
 .modal-dl-ios{background:var(--dark);color:#fff}
 .modal-dl-ios:hover{background:var(--g1)}
@@ -290,8 +301,10 @@ footer{background:var(--dark);padding:48px 24px 36px}
   .apps-grid{grid-template-columns:1fr}
   .warn-cards{grid-template-columns:1fr}
   .app-card{padding:18px}
-  .app-icon-wrap,.app-icon-wrap img{width:52px;height:52px}
-  .modal-app-icon,.modal-app-icon img{width:52px;height:52px}
+  .app-icon-wrap{width:52px;height:52px}
+  .app-icon-wrap img{width:52px;height:52px}
+  .modal-app-icon{width:52px;height:52px}
+  .modal-app-icon img{width:52px;height:52px}
 }
 @media(max-width:640px){
   .nav-links{display:none}
@@ -352,8 +365,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank top3">No.1</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/3e/6c/003e6c5d-0f71-7d48-ade1-ecd9ca571448/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Alipay" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">💙</span>
+          <img src="https://play-lh.googleusercontent.com/AMMsrb0pHeFuBPpAq6mhJ05OVqJiHKNsTBjzg-5Bkf5O3EHdlyPLRkOMYd5PvuCpBw=w240-h480-rw" alt="Alipay" loading="lazy" onerror="this.parentElement.innerHTML='💙'"/>
         </div>
         <div class="app-body">
           <div class="app-name">알리페이 Alipay</div>
@@ -368,8 +380,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank top3">No.2</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/68/9e/f8/689ef8f8-365f-bd3e-21a4-9e9e745498b9/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="WeChat" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">💚</span>
+          <img src="https://play-lh.googleusercontent.com/A_coLtH480b88u3RjGbIQCbnT4JeN4WfXh8M7GCuXcJlVJbHv1UPuJMt-IfcFNr2Eg=w240-h480-rw" alt="WeChat" loading="lazy" onerror="this.parentElement.innerHTML='💚'"/>
         </div>
         <div class="app-body">
           <div class="app-name">위챗 WeChat</div>
@@ -384,8 +395,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank top3">No.3</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/63/e3/d5/63e3d582-eb23-c9e7-6e6e-3edc7fba0f2e/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Amap" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🗺️</span>
+          <img src="https://play-lh.googleusercontent.com/2YVHBqkCpJPJ6GHSo3fB_Ckfnz_p_XUDijq9Vw1PMwPU0eo0Y4A2U1l07mYD07dQio=w240-h480-rw" alt="Amap" loading="lazy" onerror="this.parentElement.innerHTML='🗺️'"/>
         </div>
         <div class="app-body">
           <div class="app-name">가오더 지도 Amap</div>
@@ -400,8 +410,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank">No.4</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/b8/c1/97b8c11e-b8e9-8069-0c2c-274283bf7a33/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Baidu Maps" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🔵</span>
+          <img src="https://play-lh.googleusercontent.com/dTfmVlBJGtEOFOHkLvXALwGKwNAegNXqhGVBkDQgkVmvCEd6JEH4lEnwAMOWoF4-KA=w240-h480-rw" alt="Baidu Maps" loading="lazy" onerror="this.parentElement.innerHTML='🔵'"/>
         </div>
         <div class="app-body">
           <div class="app-name">바이두 지도 Baidu Maps</div>
@@ -412,19 +421,24 @@ footer{background:var(--dark);padding:48px 24px 36px}
         </div>
       </div>
 
-      <!-- 5. DiDi -->
+      <!-- 5. DiDi — 알리페이 내 사용 가능, 다운로드 버튼 없음 -->
       <div class="app-card reveal">
         <div class="app-rank">No.5</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/19/00/a0/1900a09e-a6fa-8e6e-b187-0b3dff343f3d/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="DiDi" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🚕</span>
+          <img src="https://play-lh.googleusercontent.com/g-GB3RNE7TGQ0e2I-lMTiB8mJPiLgBT3_o_9kJoqFvJRFBPQA0p0jb6ZPGqOUYKBjQ=w240-h480-rw" alt="DiDi" loading="lazy" onerror="this.parentElement.innerHTML='🚕'"/>
         </div>
         <div class="app-body">
           <div class="app-name">디디 DiDi</div>
           <span class="app-tag tag-taxi">택시</span>
-          <p class="app-desc">중국판 카카오T. 앱으로 택시를 호출해 미터 조작 및 부당 요금 청구를 방지합니다.</p>
+          <p class="app-desc">중국 대표 택시 호출 서비스. 앱으로 요금이 미리 표시돼 외국인도 안전하게 이용할 수 있습니다.</p>
           <div class="app-why"><strong>🔑 왜 필요한가요?</strong>중국 길거리 택시는 외국인 바가지 위험이 있습니다. 디디는 앱에 요금이 표시돼 안전합니다.</div>
-          <button class="app-dl-btn" onclick="openModal('디디 DiDi','didi')">⬇ 다운로드</button>
+          <div class="didi-notice">
+            <span class="didi-notice-icon">✅</span>
+            <div class="didi-notice-text">
+              별도 앱 설치 불필요
+              <span>알리페이 앱 내 '출행(出行)' 메뉴에서 바로 디디를 사용할 수 있습니다. 알리페이 하나면 충분합니다.</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -432,8 +446,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank">No.6</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/28/c5/42/28c542b5-8e5e-3f0f-c45e-5ea4ed547b3a/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Trip.com" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">✈️</span>
+          <img src="https://play-lh.googleusercontent.com/e_gX3Mb6jK8YY9fTMGPjJBT-NeqiN2G3iinq7WVKaqGdgbNqV0UNKiDanf_g_HrdY3s=w240-h480-rw" alt="Trip.com" loading="lazy" onerror="this.parentElement.innerHTML='✈️'"/>
         </div>
         <div class="app-body">
           <div class="app-name">트립닷컴 Trip.com</div>
@@ -448,8 +461,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank">No.7</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/0c/e1/1f0ce133-e329-3f93-4b15-d3a0a2baf5ce/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Papago" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🟢</span>
+          <img src="https://play-lh.googleusercontent.com/ZmL4FYR1sMZAD_Ol5qdHHDDxz6b2x7Y0WB6ROJtSxl2VzBaGdEfC3j2JTd_VyTdxkA=w240-h480-rw" alt="Papago" loading="lazy" onerror="this.parentElement.innerHTML='🟢'"/>
         </div>
         <div class="app-body">
           <div class="app-name">파파고 Papago</div>
@@ -464,8 +476,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank">No.8</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/71/b9/86/71b986aa-9f6c-c939-277e-ab3da7a7a35b/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Google Translate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🔤</span>
+          <img src="https://play-lh.googleusercontent.com/ZAPoc_qrRDiiGjOWxFcWNEHKCBYMloqaGlGDLEWkUgKzCnvQjjLTAIrMnBZUZxSRf8o=w240-h480-rw" alt="Google Translate" loading="lazy" onerror="this.parentElement.innerHTML='🔤'"/>
         </div>
         <div class="app-body">
           <div class="app-name">구글 번역 Google Translate</div>
@@ -480,8 +491,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank">No.9</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/73/da/3c/73da3c44-b24b-e88e-bcb2-e98e7e6acade/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Meituan" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🛵</span>
+          <img src="https://play-lh.googleusercontent.com/3OxMaOoNuOuSaQ3MHjCJLmL_QSmfTiXaWvMnQ0Coj1lICv9cHFx-DgmvJhTGi2jGCA=w240-h480-rw" alt="Meituan" loading="lazy" onerror="this.parentElement.innerHTML='🛵'"/>
         </div>
         <div class="app-body">
           <div class="app-name">메이퇀 Meituan</div>
@@ -496,8 +506,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="app-card reveal">
         <div class="app-rank">No.10</div>
         <div class="app-icon-wrap">
-          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/09/62/25/09622526-4f77-d7c9-5c7e-e0f74be4d0d0/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Dianping" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">⭐</span>
+          <img src="https://play-lh.googleusercontent.com/vz_LUCyFJjT7YQYP8U4C7Ub4X0-_YfRb6N5JD9wq_K2h5Z4v_j7vjJqCqV9XEQXG5E=w240-h480-rw" alt="Dianping" loading="lazy" onerror="this.parentElement.innerHTML='⭐'"/>
         </div>
         <div class="app-body">
           <div class="app-name">다중뎬핑 Dianping</div>
@@ -544,7 +553,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
       <div class="warn-card">
         <div class="warn-icon">🔑</div>
         <h3>모든 앱 로그인까지 완료</h3>
-        <p>설치만으로 부족합니다. 위챗·알리페이·디디 모두 회원가입과 로그인까지 한국에서 완료해야 합니다.</p>
+        <p>설치만으로 부족합니다. 위챗·알리페이 모두 회원가입과 로그인까지 한국에서 완료해야 합니다.</p>
       </div>
       <div class="warn-card">
         <div class="warn-icon">💵</div>
@@ -614,7 +623,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
           </div>
           <div class="check-item" onclick="toggleCheck(this)">
             <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="check-text"><strong>디디(DiDi) 설치 및 회원가입</strong><span>한국 번호로 가입 가능, 카드 등록까지</span></div>
+            <div class="check-text"><strong>알리페이 내 디디(出行) 기능 확인</strong><span>알리페이 → 출행(出行) 탭에서 디디 택시 호출 가능</span></div>
             <span class="check-badge cb-app">앱</span>
           </div>
           <div class="check-item" onclick="toggleCheck(this)">
@@ -765,8 +774,8 @@ footer{background:var(--dark);padding:48px 24px 36px}
   <div class="modal-sheet">
     <div class="modal-handle"></div>
     <div class="modal-app-info">
-      <div class="modal-app-icon">
-        <img id="mIconImg" src="" alt="앱 아이콘"/>
+      <div class="modal-app-icon" id="mIconWrap">
+        <img id="mIconImg" src="" alt="앱 아이콘" onerror="this.style.display='none'"/>
       </div>
       <div>
         <p class="modal-app-name" id="mName">앱 이름</p>
@@ -789,66 +798,85 @@ footer{background:var(--dark);padding:48px 24px 36px}
 /* ── APP DATA ── */
 const APP_DATA = {
   alipay: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/3e/6c/003e6c5d-0f71-7d48-ade1-ecd9ca571448/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '💙',
     ios: 'https://apps.apple.com/kr/app/alipay/id333206289',
-    android: 'https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone'
+    android: 'https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone&hl=ko'
   },
   wechat: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/68/9e/f8/689ef8f8-365f-bd3e-21a4-9e9e745498b9/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '💚',
     ios: 'https://apps.apple.com/kr/app/wechat/id414478124',
-    android: 'https://play.google.com/store/apps/details?id=com.tencent.mm'
+    android: 'https://play.google.com/store/apps/details?id=com.tencent.mm&hl=ko'
   },
   amap: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/63/e3/d5/63e3d582-eb23-c9e7-6e6e-3edc7fba0f2e/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '🗺️',
     ios: 'https://apps.apple.com/kr/app/amap/id461703208',
-    android: 'https://play.google.com/store/apps/details?id=com.autonavi.minimap'
+    android: 'https://play.google.com/store/apps/details?id=com.autonavi.minimap&hl=ko'
   },
   baidu: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/b8/c1/97b8c11e-b8e9-8069-0c2c-274283bf7a33/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '🔵',
     ios: 'https://apps.apple.com/kr/app/baidu-maps/id452186370',
-    android: 'https://play.google.com/store/apps/details?id=com.baidu.BaiduMap'
-  },
-  didi: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/19/00/a0/1900a09e-a6fa-8e6e-b187-0b3dff343f3d/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
-    ios: 'https://apps.apple.com/us/app/didi-get-a-ride/id1437183972',
-    android: 'https://play.google.com/store/apps/details?id=com.didiglobal.passenger'
+    android: 'https://play.google.com/store/apps/details?id=com.baidu.BaiduMap&hl=ko'
   },
   trip: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/28/c5/42/28c542b5-8e5e-3f0f-c45e-5ea4ed547b3a/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '✈️',
     ios: 'https://apps.apple.com/kr/app/trip-com/id681752345',
-    android: 'https://play.google.com/store/apps/details?id=ctrip.english'
+    android: 'https://play.google.com/store/apps/details?id=ctrip.english&hl=ko'
   },
   papago: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/0c/e1/1f0ce133-e329-3f93-4b15-d3a0a2baf5ce/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '🟢',
     ios: 'https://apps.apple.com/kr/app/papago/id1147874819',
-    android: 'https://play.google.com/store/apps/details?id=com.naver.labs.translator'
+    android: 'https://play.google.com/store/apps/details?id=com.naver.labs.translator&hl=ko'
   },
   gtranslate: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/71/b9/86/71b986aa-9f6c-c939-277e-ab3da7a7a35b/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '🔤',
     ios: 'https://apps.apple.com/kr/app/google-translate/id414706506',
-    android: 'https://play.google.com/store/apps/details?id=com.google.android.apps.translate'
+    android: 'https://play.google.com/store/apps/details?id=com.google.android.apps.translate&hl=ko'
   },
   meituan: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/73/da/3c/73da3c44-b24b-e88e-bcb2-e98e7e6acade/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '🛵',
     ios: 'https://apps.apple.com/cn/app/id423084029',
-    android: 'https://play.google.com/store/apps/details?id=com.sankuai.meituan'
+    android: 'https://play.google.com/store/apps/details?id=com.sankuai.meituan&hl=ko'
   },
   dianping: {
-    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/09/62/25/09622526-4f77-d7c9-5c7e-e0f74be4d0d0/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    emoji: '⭐',
     ios: 'https://apps.apple.com/cn/app/id351091731',
-    android: 'https://play.google.com/store/apps/details?id=com.dianping.v1'
+    android: 'https://play.google.com/store/apps/details?id=com.dianping.v1&hl=ko'
   }
 };
 
 /* ── MODAL ── */
 function openModal(name, key) {
-  const d = APP_DATA[key] || {};
+  const d = APP_DATA[key];
+  if (!d) return;
   document.getElementById('mName').textContent = name;
-  const img = document.getElementById('mIconImg');
-  img.src = d.icon || '';
-  img.alt = name;
-  document.getElementById('mIosBtn').href = d.ios || '#';
-  document.getElementById('mAndBtn').href = d.android || '#';
+
+  /* 아이콘: 카드의 img src를 그대로 재사용 */
+  const cardImgs = document.querySelectorAll('.app-icon-wrap img');
+  let srcFound = '';
+  cardImgs.forEach(function(img) {
+    if (img.alt && name.includes(img.alt.split(' ')[0])) srcFound = img.src;
+  });
+  const mImg = document.getElementById('mIconImg');
+  const mWrap = document.getElementById('mIconWrap');
+  if (srcFound) {
+    mImg.src = srcFound;
+    mImg.style.display = 'block';
+    mWrap.style.fontSize = '';
+  } else {
+    mImg.style.display = 'none';
+    mWrap.style.fontSize = '1.875rem';
+    mWrap.dataset.emoji = d.emoji;
+    /* show emoji as text */
+    if (!mWrap.querySelector('.m-emoji')) {
+      var sp = document.createElement('span');
+      sp.className = 'm-emoji';
+      mWrap.appendChild(sp);
+    }
+    mWrap.querySelector('.m-emoji').textContent = d.emoji;
+  }
+
+  document.getElementById('mIosBtn').href = d.ios;
+  document.getElementById('mAndBtn').href = d.android;
   document.getElementById('dlModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -877,27 +905,25 @@ function toggleCheck(el) {
 
 /* ── PHRASE TABS ── */
 function switchTab(btn, panelId) {
-  document.querySelectorAll('.phrase-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.phrase-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.phrase-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.phrase-panel').forEach(function(p){ p.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById(panelId).classList.add('active');
 }
 
 /* ── SCROLL REVEAL ── */
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => {
+var ro = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
     if (e.isIntersecting) { e.target.classList.add('show'); ro.unobserve(e.target); }
   });
 }, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.querySelectorAll('.reveal').forEach(function(el){ ro.observe(el); });
 
 /* ── SMOOTH SCROLL ── */
 function scrollToId(id) {
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 </script>
 </body>
 </html>
-HTMLEOF
-echo "Done: $(wc -c < /mnt/user-data/outputs/index.html) bytes"
