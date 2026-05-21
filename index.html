@@ -1,134 +1,29 @@
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta name="naver-site-verification" content="9f00736e7c95990070fe0a74f28a0322393e41d1" />
-  <!-- Google tag (gtag.js) -->
+<meta name="naver-site-verification" content="9f00736e7c95990070fe0a74f28a0322393e41d1" />
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-HW19C1W4HB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-HW19C1W4HB');
 </script>
-  <meta name="google-site-verification" content="BLQYSHkJUAjdig_aU4HSaaEAIA1ProwsYAE95yXlT-o" />
+<meta name="google-site-verification" content="BLQYSHkJUAjdig_aU4HSaaEAIA1ProwsYAE95yXlT-o" />
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>바로차이나 — 중국여행은 바로차이나!</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--blue:#0064FF;--dark:#191F28;--g5:#E8ECF0;--g6:#F2F4F6}
-html,body{height:100%;overflow:hidden;font-family:'Noto Sans KR',sans-serif;background:#23272f}
-
-.toolbar{
-  height:52px;background:var(--dark);
-  display:flex;align-items:center;gap:10px;padding:0 16px;
-  box-shadow:0 2px 8px rgba(0,0,0,0.4);position:relative;z-index:10;
-}
-.logo{font-size:1rem;font-weight:900;color:var(--blue)}
-.logo b{color:#fff}
-.logo small{font-size:.7rem;color:rgba(255,255,255,.35);font-weight:400;margin-left:6px}
-.vp-group{display:flex;gap:4px;margin-left:auto}
-.vp{
-  background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.12);
-  color:rgba(255,255,255,0.65);border-radius:8px;
-  padding:6px 14px;font-size:0.8rem;font-weight:700;
-  cursor:pointer;font-family:inherit;transition:all .15s;
-}
-.vp:hover{background:rgba(255,255,255,0.15);color:#fff}
-.vp.on{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 2px 10px rgba(0,100,255,.4)}
-
-.stage{
-  height:calc(100vh - 52px);
-  display:flex;align-items:center;justify-content:center;
-  padding:20px;
-  transition:background .25s;
-}
-.stage.bg-dark{background:#111}
-.stage.bg-mid{background:#23272f}
-
-.wrapper{
-  position:relative;overflow:hidden;
-  transition:all .3s ease;
-  background:#fff;
-}
-.wrapper.desktop{
-  width:100%;height:100%;border-radius:10px;
-  box-shadow:0 4px 40px rgba(0,0,0,.5);
-}
-.wrapper.tablet{
-  width:768px;height:100%;max-height:1024px;border-radius:10px;
-  box-shadow:0 4px 40px rgba(0,0,0,.5);
-}
-.wrapper.mobile{
-  width:390px;height:100%;max-height:844px;
-  border-radius:44px;
-  outline:10px solid #1a1a1a;
-  box-shadow:0 0 0 11px #333, 0 16px 56px rgba(0,0,0,.7);
-}
-.wrapper.mobile::before{
-  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:115px;height:28px;background:#1a1a1a;
-  border-radius:0 0 16px 16px;z-index:5;pointer-events:none;
-}
-iframe{
-  width:100%;height:100%;border:none;display:block;
-}
-.wrapper.mobile iframe{
-  border-radius:36px;
-}
-
-.loader{
-  position:absolute;inset:0;background:#fff;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-  z-index:20;transition:opacity .4s;border-radius:inherit;
-}
-.loader.done{opacity:0;pointer-events:none}
-.spin{
-  width:34px;height:34px;
-  border:3px solid #E8ECF0;border-top-color:var(--blue);
-  border-radius:50%;animation:rot .7s linear infinite;
-}
-@keyframes rot{to{transform:rotate(360deg)}}
-.spin-txt{font-size:.8rem;color:#8B95A1;font-weight:500}
-</style>
-</head>
-<body>
-
-<div class="toolbar">
-  <div class="logo">바로<b>차이나</b><small>중국 여행은 바로차이나!</small></div>
-  <div class="vp-group">
-    <button class="vp on"  onclick="setVP('desktop',this)">🖥 데스크탑</button>
-    <button class="vp"     onclick="setVP('tablet',this)">📱 태블릿</button>
-    <button class="vp"     onclick="setVP('mobile',this)">📲 모바일</button>
-  </div>
-</div>
-
-<div class="stage bg-mid" id="stage">
-  <div class="wrapper desktop" id="wrapper">
-    <div class="loader" id="loader">
-      <div class="spin"></div>
-      <p class="spin-txt">페이지 불러오는 중...</p>
-    </div>
-    <iframe
-      id="frame"
-      srcdoc="<!DOCTYPE html>
-<html lang=&quot;ko&quot;>
-<head>
-<meta charset=&quot;UTF-8&quot;/>
-<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;/>
-<title>바로차이나 — 중국 여행 앱 &amp; 준비 가이드</title>
-<meta name=&quot;description&quot; content=&quot;중국 여행 필수앱 TOP10, 출국 전 체크리스트, 기초회화까지. 중국 여행 준비, 여기 하나면 끝.&quot;/>
-<link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;/>
-<link href=&quot;https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&amp;display=swap&quot; rel=&quot;stylesheet&quot;/>
+<meta name="description" content="중국 여행 필수앱 TOP10, 출국 전 체크리스트, 기초회화까지. 중국 여행 준비, 여기 하나면 끝."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --blue:#0064FF;
   --blue-dark:#0052D4;
   --blue-light:#EEF4FF;
-  --blue-mid:#3D7EFF;
   --dark:#191F28;
   --g1:#333D4B;
   --g2:#4E5968;
@@ -146,14 +41,18 @@ iframe{
   --shadow-hover:0 8px 36px rgba(0,0,0,0.13);
 }
 html{font-size:16px;scroll-behavior:smooth}
-body{font-family:'Noto Sans KR',-apple-system,sans-serif;background:var(--white);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
+body{
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--white);color:var(--dark);
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
 
 /* ── NAV ── */
 nav{
   position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   border-bottom:1px solid var(--g5);
   height:60px;padding:0 20px;
   display:flex;align-items:center;justify-content:space-between;
@@ -163,13 +62,13 @@ nav{
 .nav-links{display:flex;gap:4px}
 .nav-links a{font-size:0.875rem;font-weight:500;color:var(--g2);text-decoration:none;padding:7px 12px;border-radius:8px;transition:background .15s,color .15s}
 .nav-links a:hover{background:var(--g6);color:var(--dark)}
-.nav-btn{background:var(--blue);color:#fff;border:none;border-radius:100px;padding:9px 18px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s}
+.nav-btn{background:var(--blue);color:#fff;border:none;border-radius:100px;padding:9px 18px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s;white-space:nowrap}
 .nav-btn:hover{background:var(--blue-dark)}
-.nav-mob{display:none}
+.nav-mob{display:none;font-size:1.375rem;background:none;border:none;cursor:pointer;color:var(--dark);padding:4px;line-height:1}
 
 /* ── HERO ── */
 .hero{
-  padding:80px 24px 72px;
+  padding:72px 24px 64px;
   background:linear-gradient(160deg,#f0f5ff 0%,#fff 60%);
   text-align:center;
 }
@@ -181,14 +80,11 @@ nav{
   font-size:0.8rem;font-weight:700;margin-bottom:28px;
 }
 .hero h1{
-  font-size:clamp(2rem,7vw,3rem);font-weight:900;
-  line-height:1.2;letter-spacing:-1.5px;color:var(--dark);margin-bottom:20px;
+  font-size:clamp(2rem,6vw,2.875rem);font-weight:900;
+  line-height:1.22;letter-spacing:-1.5px;color:var(--dark);margin-bottom:20px;
 }
 .hero h1 em{color:var(--blue);font-style:normal}
-.hero-sub{
-  font-size:clamp(1rem,3vw,1.125rem);
-  color:var(--g2);margin-bottom:36px;line-height:1.8;
-}
+.hero-sub{font-size:clamp(1rem,3vw,1.125rem);color:var(--g2);margin-bottom:36px;line-height:1.8}
 .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn-primary{
   background:var(--blue);color:#fff;border:none;border-radius:14px;
@@ -196,17 +92,18 @@ nav{
   font-family:inherit;display:inline-flex;align-items:center;gap:8px;
   box-shadow:0 4px 24px rgba(0,100,255,.28);
   transition:background .15s,transform .14s,box-shadow .15s;
+  touch-action:manipulation;
 }
 .btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,100,255,.36)}
 .btn-outline{
   background:#fff;color:var(--dark);border:1.5px solid var(--g5);border-radius:14px;
   padding:16px 28px;font-size:1rem;font-weight:600;cursor:pointer;
   font-family:inherit;display:inline-flex;align-items:center;gap:8px;
-  transition:border-color .15s,box-shadow .15s;
+  transition:border-color .15s,box-shadow .15s;touch-action:manipulation;
 }
 .btn-outline:hover{border-color:var(--blue);box-shadow:0 2px 12px rgba(0,100,255,.1)}
 .hero-note{margin-top:20px;font-size:0.8rem;color:var(--g4);display:flex;align-items:center;gap:6px;justify-content:center}
-.hero-note::before{content:&quot;✓&quot;;color:var(--blue);font-weight:700}
+.hero-note::before{content:"✓";color:var(--blue);font-weight:700}
 
 /* ── SECTION COMMON ── */
 .section{padding:72px 24px}
@@ -220,33 +117,39 @@ nav{
 .apps-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
-  gap:14px;
+  gap:16px;
 }
 .app-card{
   background:var(--white);border-radius:var(--r);
-  border:1.5px solid var(--g5);padding:20px;
+  border:1.5px solid var(--g5);padding:22px;
   display:flex;align-items:flex-start;gap:16px;
   box-shadow:var(--shadow);
   transition:box-shadow .2s,border-color .2s,transform .18s;
   position:relative;overflow:hidden;
 }
 .app-card:hover{box-shadow:var(--shadow-hover);border-color:var(--blue);transform:translateY(-2px)}
-.app-rank{
-  position:absolute;top:14px;right:16px;
-  font-size:0.7rem;font-weight:800;color:var(--g4);
-}
+.app-rank{position:absolute;top:14px;right:16px;font-size:0.7rem;font-weight:800;color:var(--g4)}
 .app-rank.top3{color:var(--blue)}
+
+/* ── APP ICON: real image ── */
 .app-icon-wrap{
-  width:56px;height:56px;border-radius:14px;
+  width:60px;height:60px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;
-  font-size:1.75rem;flex-shrink:0;
+  flex-shrink:0;overflow:hidden;background:var(--g6);
 }
+.app-icon-wrap img{
+  width:60px;height:60px;border-radius:14px;
+  object-fit:cover;display:block;
+}
+/* fallback emoji shown when img fails */
+.app-icon-wrap .icon-fallback{
+  font-size:1.75rem;line-height:1;display:none;
+}
+.app-icon-wrap img.error + .icon-fallback{display:block}
+
 .app-body{flex:1;min-width:0}
-.app-name{font-size:1rem;font-weight:800;color:var(--dark);margin-bottom:3px}
-.app-tag{
-  display:inline-block;font-size:0.7rem;font-weight:700;
-  padding:2px 8px;border-radius:100px;margin-bottom:8px;
-}
+.app-name{font-size:1rem;font-weight:800;color:var(--dark);margin-bottom:4px}
+.app-tag{display:inline-block;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:100px;margin-bottom:8px}
 .tag-pay{background:#FFF0F0;color:var(--red)}
 .tag-map{background:#FFF3E0;color:#E67700}
 .tag-trans{background:#F0FFF4;color:#2F9E44}
@@ -264,35 +167,41 @@ nav{
 .app-why strong{color:var(--blue);font-size:0.75rem;display:block;margin-bottom:2px}
 .app-dl-btn{
   background:var(--dark);color:#fff;border:none;border-radius:10px;
-  padding:10px 0;font-size:0.875rem;font-weight:700;cursor:pointer;
+  padding:12px 0;font-size:0.9375rem;font-weight:700;cursor:pointer;
   font-family:inherit;width:100%;transition:background .15s;
   display:flex;align-items:center;justify-content:center;gap:6px;
+  touch-action:manipulation;
 }
 .app-dl-btn:hover{background:var(--g1)}
+.app-dl-btn:active{transform:scale(0.98)}
 
 /* ── DOWNLOAD MODAL ── */
 .modal-overlay{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
   z-index:500;align-items:flex-end;justify-content:center;
 }
 .modal-overlay.open{display:flex}
 .modal-sheet{
   background:#fff;width:100%;max-width:480px;
-  border-radius:24px 24px 0 0;padding:28px 24px 40px;
-  animation:slideUp .3s ease;
+  border-radius:24px 24px 0 0;padding:28px 24px 44px;
+  animation:slideUp .28s ease;
 }
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .modal-handle{width:40px;height:4px;background:var(--g5);border-radius:100px;margin:0 auto 20px}
 .modal-app-info{display:flex;align-items:center;gap:14px;margin-bottom:24px}
-.modal-app-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.75rem}
+.modal-app-icon{
+  width:60px;height:60px;border-radius:14px;overflow:hidden;
+  background:var(--g6);flex-shrink:0;
+}
+.modal-app-icon img{width:60px;height:60px;object-fit:cover;border-radius:14px;display:block}
 .modal-app-name{font-size:1.125rem;font-weight:800}
 .modal-app-sub{font-size:0.875rem;color:var(--g3);margin-top:3px}
 .modal-btns{display:flex;flex-direction:column;gap:10px}
 .modal-dl-ios,.modal-dl-android{
   display:flex;align-items:center;justify-content:center;gap:10px;
-  padding:16px;border-radius:14px;font-size:1rem;font-weight:700;
+  padding:18px;border-radius:14px;font-size:1rem;font-weight:700;
   cursor:pointer;font-family:inherit;border:none;text-decoration:none;
-  transition:background .15s;
+  transition:background .15s;touch-action:manipulation;
 }
 .modal-dl-ios{background:var(--dark);color:#fff}
 .modal-dl-ios:hover{background:var(--g1)}
@@ -305,51 +214,33 @@ nav{
 
 /* ── WARNING SECTION ── */
 .warn-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.warn-card{
-  background:var(--white);border-radius:var(--r);
-  border:1.5px solid var(--g5);padding:24px 20px;
-  box-shadow:var(--shadow);
-}
+.warn-card{background:var(--white);border-radius:var(--r);border:1.5px solid var(--g5);padding:24px 20px;box-shadow:var(--shadow)}
 .warn-card.accent{border-color:#FFCDD2;background:#FFF9F9}
 .warn-icon{font-size:2rem;margin-bottom:12px;line-height:1}
 .warn-card h3{font-size:1rem;font-weight:800;margin-bottom:8px;line-height:1.35}
 .warn-card p{font-size:0.875rem;color:var(--g2);line-height:1.6}
 
 /* ── CHECKLIST ── */
-.progress-box{
-  background:var(--blue-light);border-radius:var(--r);
-  padding:20px 24px;margin-bottom:24px;
-}
+.progress-box{background:var(--blue-light);border-radius:var(--r);padding:20px 24px;margin-bottom:24px}
 .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .progress-top span{font-size:0.9375rem;font-weight:700;color:var(--dark)}
 .progress-top strong{font-size:1.375rem;font-weight:900;color:var(--blue)}
 .progress-track{height:10px;background:rgba(0,100,255,.15);border-radius:100px;overflow:hidden}
 .progress-fill{height:100%;background:var(--blue);border-radius:100px;transition:width .4s ease;width:0%}
 .progress-caption{margin-top:8px;font-size:0.8rem;color:var(--blue);font-weight:600}
-
 .check-groups{display:flex;flex-direction:column;gap:24px}
-.check-group-label{
-  font-size:0.8125rem;font-weight:800;color:var(--g3);
-  letter-spacing:.5px;text-transform:uppercase;
-  padding-bottom:10px;border-bottom:1.5px solid var(--g5);
-  margin-bottom:4px;
-}
+.check-group-label{font-size:0.8125rem;font-weight:800;color:var(--g3);letter-spacing:.5px;text-transform:uppercase;padding-bottom:10px;border-bottom:1.5px solid var(--g5);margin-bottom:4px}
 .check-items{display:flex;flex-direction:column;gap:8px}
 .check-item{
   background:var(--white);border-radius:var(--r-sm);
   border:1.5px solid var(--g5);padding:16px 18px;
   display:flex;align-items:center;gap:14px;
   cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s;
-  user-select:none;
+  user-select:none;touch-action:manipulation;
 }
 .check-item:hover{border-color:var(--blue);box-shadow:0 2px 12px rgba(0,100,255,.08)}
 .check-item.checked{background:var(--blue-light);border-color:var(--blue)}
-.check-circle{
-  width:26px;height:26px;border-radius:50%;
-  border:2px solid var(--g4);background:#fff;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .18s;
-}
+.check-circle{width:26px;height:26px;border-radius:50%;border:2px solid var(--g4);background:#fff;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .18s}
 .check-item.checked .check-circle{background:var(--blue);border-color:var(--blue)}
 .check-circle svg{display:none}
 .check-item.checked .check-circle svg{display:block}
@@ -357,46 +248,24 @@ nav{
 .check-text strong{font-size:0.9375rem;font-weight:700;color:var(--dark);display:block}
 .check-text span{font-size:0.8125rem;color:var(--g3);margin-top:1px;display:block}
 .check-item.checked .check-text strong{color:var(--blue)}
-.check-badge{
-  font-size:0.7rem;font-weight:700;padding:3px 9px;
-  border-radius:100px;flex-shrink:0;
-}
+.check-badge{font-size:0.7rem;font-weight:700;padding:3px 9px;border-radius:100px;flex-shrink:0}
 .cb-must{background:#FFECEC;color:var(--red)}
 .cb-app{background:var(--blue-light);color:var(--blue)}
 .cb-thing{background:#F0FFF4;color:var(--green)}
 
 /* ── PHRASES ── */
 .phrase-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.phrase-tab{
-  background:var(--g6);color:var(--g2);border:none;border-radius:100px;
-  padding:9px 18px;font-size:0.875rem;font-weight:700;cursor:pointer;
-  font-family:inherit;transition:background .15s,color .15s;
-}
+.phrase-tab{background:var(--g6);color:var(--g2);border:none;border-radius:100px;padding:10px 18px;font-size:0.875rem;font-weight:700;cursor:pointer;font-family:inherit;transition:background .15s,color .15s;touch-action:manipulation}
 .phrase-tab.active{background:var(--dark);color:#fff}
-.phrase-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  gap:12px;
-}
-.phrase-card{
-  background:var(--white);border-radius:var(--r-sm);
-  border:1.5px solid var(--g5);padding:18px 20px;
-  box-shadow:var(--shadow);
-  display:flex;align-items:center;gap:14px;
-}
+.phrase-panel{display:none}
+.phrase-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.phrase-card{background:var(--white);border-radius:var(--r-sm);border:1.5px solid var(--g5);padding:18px 20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px}
 .phrase-body{flex:1}
 .phrase-kr{font-size:0.8125rem;color:var(--g3);margin-bottom:4px}
 .phrase-cn{font-size:1.125rem;font-weight:700;color:var(--dark);margin-bottom:3px}
 .phrase-py{font-size:0.8125rem;color:var(--g4);font-style:italic}
-.phrase-play{
-  width:40px;height:40px;border-radius:50%;
-  background:var(--g6);border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1rem;flex-shrink:0;transition:background .15s,transform .12s;
-}
+.phrase-play{width:42px;height:42px;border-radius:50%;background:var(--g6);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:background .15s,transform .12s;touch-action:manipulation}
 .phrase-play:hover{background:var(--blue);transform:scale(1.1)}
-.phrase-panel{display:none}
-.phrase-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 
 /* ── FOOTER ── */
 footer{background:var(--dark);padding:48px 24px 36px}
@@ -407,10 +276,7 @@ footer{background:var(--dark);padding:48px 24px 36px}
 .footer-col h4{font-size:0.875rem;font-weight:800;color:var(--g4);margin-bottom:12px;letter-spacing:.5px}
 .footer-col a{display:block;font-size:0.875rem;color:var(--g3);text-decoration:none;margin-bottom:8px;transition:color .12s}
 .footer-col a:hover{color:#fff}
-.footer-bottom{
-  padding-top:24px;border-top:1px solid #2A3340;
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;
-}
+.footer-bottom{padding-top:24px;border-top:1px solid #2A3340;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .footer-bottom p{font-size:0.775rem;color:#4E5968}
 .footer-update{font-size:0.775rem;color:#4E5968}
 
@@ -419,17 +285,26 @@ footer{background:var(--dark);padding:48px 24px 36px}
 .reveal.show{opacity:1;transform:none}
 
 /* ── RESPONSIVE ── */
-@media(max-width:640px){
-  .nav-links{display:none}
-  .nav-mob{display:block;font-size:1.25rem;background:none;border:none;cursor:pointer;color:var(--dark);padding:4px}
+@media(max-width:768px){
+  .section{padding:56px 20px}
   .apps-grid{grid-template-columns:1fr}
   .warn-cards{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr}
+  .app-card{padding:18px}
+  .app-icon-wrap,.app-icon-wrap img{width:52px;height:52px}
+  .modal-app-icon,.modal-app-icon img{width:52px;height:52px}
+}
+@media(max-width:640px){
+  .nav-links{display:none}
+  .nav-mob{display:block}
   .hero-btns{flex-direction:column;align-items:stretch}
-  .btn-primary,.btn-outline{justify-content:center}
+  .btn-primary,.btn-outline{justify-content:center;padding:16px 24px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .phrase-tab{padding:9px 14px;font-size:0.8125rem}
 }
 @media(max-width:400px){
   .footer-grid{grid-template-columns:1fr}
+  .hero h1{font-size:1.875rem}
+  .sec-title{font-size:1.5rem}
 }
 </style>
 </head>
@@ -437,169 +312,199 @@ footer{background:var(--dark);padding:48px 24px 36px}
 
 <!-- NAV -->
 <nav>
-  <a href=&quot;#&quot; class=&quot;nav-logo&quot;>바로<b>차이나</b></a>
-  <div class=&quot;nav-links&quot;>
-    <a href=&quot;#apps&quot;>필수앱</a>
-    <a href=&quot;#warning&quot;>준비 안내</a>
-    <a href=&quot;#checklist&quot;>체크리스트</a>
-    <a href=&quot;#phrases&quot;>기초회화</a>
+  <a href="#" class="nav-logo">바로<b>차이나</b></a>
+  <div class="nav-links">
+    <a href="#apps">필수앱</a>
+    <a href="#warning">준비 안내</a>
+    <a href="#checklist">체크리스트</a>
+    <a href="#phrases">기초회화</a>
   </div>
-  <button class=&quot;nav-btn&quot; onclick=&quot;scrollToId('checklist')&quot;>출국 전 체크하기</button>
-  <button class=&quot;nav-mob&quot; aria-label=&quot;메뉴&quot;>☰</button>
+  <button class="nav-btn" onclick="scrollToId('checklist')">출국 전 체크하기</button>
+  <button class="nav-mob" aria-label="메뉴">☰</button>
 </nav>
 
 <!-- HERO -->
-<section class=&quot;hero&quot;>
-  <div class=&quot;hero-inner reveal&quot;>
-    <div class=&quot;hero-chip&quot;>🇨🇳 중국 여행 준비 가이드</div>
-    <h1>중국 여행은 <br>앱 준비에서<br><em>시작됩니다.</em></h1>
-    <p class=&quot;hero-sub&quot;>결제·지도·택시·번역까지<br>중국 여행 필수 앱을 한번에 준비했습니다.</p>
-    <div class=&quot;hero-btns&quot;>
-      <button class=&quot;btn-primary&quot; onclick=&quot;scrollToId('apps')&quot;>📱 필수앱 TOP10 보기</button>
-      <button class=&quot;btn-outline&quot; onclick=&quot;scrollToId('checklist')&quot;>✅ 출국 전 체크리스트</button>
+<section class="hero">
+  <div class="hero-inner reveal">
+    <div class="hero-chip">🇨🇳 중국 여행 준비 가이드</div>
+    <h1>중국 여행은<br>앱 준비에서<br><em>시작됩니다.</em></h1>
+    <p class="hero-sub">결제·지도·택시·번역까지<br>중국 여행 필수 앱을 한번에 준비했습니다.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="scrollToId('apps')">📱 필수앱 TOP10 보기</button>
+      <button class="btn-outline" onclick="scrollToId('checklist')">✅ 출국 전 체크리스트</button>
     </div>
-    <p class=&quot;hero-note&quot;>무료 · 최신 업데이트</p>
+    <p class="hero-note">무료 · 최신 업데이트</p>
   </div>
 </section>
 
 <!-- SECTION 2: 필수앱 TOP10 -->
-<section class=&quot;section&quot; id=&quot;apps&quot;>
-  <div class=&quot;sec-inner&quot;>
-    <div class=&quot;reveal&quot;>
-      <p class=&quot;sec-label&quot;>⭐ 가장 중요한 섹션</p>
-      <h2 class=&quot;sec-title&quot;>중국 여행<br>필수앱 TOP 10</h2>
-      <p class=&quot;sec-desc&quot;>중국에서 실제로 가장 많이 쓰이는 앱들을 엄선했습니다.<br>출국 전 반드시 설치 및 로그인까지 완료하세요.</p>
+<section class="section" id="apps">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">⭐ 가장 중요한 섹션</p>
+      <h2 class="sec-title">중국 여행<br>필수앱 TOP 10</h2>
+      <p class="sec-desc">중국에서 실제로 가장 많이 쓰이는 앱들을 엄선했습니다.<br>출국 전 반드시 설치 및 로그인까지 완료하세요.</p>
     </div>
 
-    <div class=&quot;apps-grid&quot;>
+    <div class="apps-grid">
 
       <!-- 1. Alipay -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank top3&quot;>No.1</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#E8F4FF&quot;>💙</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>알리페이 Alipay</div>
-          <span class=&quot;app-tag tag-pay&quot;>결제</span>
-          <p class=&quot;app-desc&quot;>중국 최대 간편결제 앱. 식당, 편의점, 교통, 관광지 입장권까지 사실상 모든 결제를 알리페이로 합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>중국에서 신용카드 단독 사용은 거의 불가합니다. 한국 카드를 알리페이에 연결하면 외국인도 즉시 사용 가능합니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('알리페이 Alipay','💙','alipay','#E8F4FF')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank top3">No.1</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/3e/6c/003e6c5d-0f71-7d48-ade1-ecd9ca571448/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Alipay" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">💙</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">알리페이 Alipay</div>
+          <span class="app-tag tag-pay">결제</span>
+          <p class="app-desc">중국 최대 간편결제 앱. 식당, 편의점, 교통, 관광지 입장권까지 사실상 모든 결제를 알리페이로 합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>중국에서 신용카드 단독 사용은 거의 불가합니다. 한국 카드를 알리페이에 연결하면 외국인도 즉시 사용 가능합니다.</div>
+          <button class="app-dl-btn" onclick="openModal('알리페이 Alipay','alipay')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 2. WeChat -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank top3&quot;>No.2</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#E8F9F0&quot;>💚</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>위챗 WeChat</div>
-          <span class=&quot;app-tag tag-comm&quot;>소통</span>
-          <p class=&quot;app-desc&quot;>중국 국민 메신저. 현지인과 연락, 위챗페이 결제, 미니프로그램 활용 등 다목적으로 필요합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>가이드, 숙소, 현지인과의 소통이 모두 위챗 기반. 카카오톡 대신 위챗을 주로 씁니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('위챗 WeChat','💚','wechat','#E8F9F0')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank top3">No.2</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/68/9e/f8/689ef8f8-365f-bd3e-21a4-9e9e745498b9/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="WeChat" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">💚</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">위챗 WeChat</div>
+          <span class="app-tag tag-comm">소통</span>
+          <p class="app-desc">중국 국민 메신저. 현지인과 연락, 위챗페이 결제, 미니프로그램 활용 등 다목적으로 필요합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>가이드, 숙소, 현지인과의 소통이 모두 위챗 기반. 카카오톡 대신 위챗을 주로 씁니다.</div>
+          <button class="app-dl-btn" onclick="openModal('위챗 WeChat','wechat')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 3. Amap -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank top3&quot;>No.3</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#FFF3E0&quot;>🗺️</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>가오더 지도 Amap</div>
-          <span class=&quot;app-tag tag-map&quot;>지도</span>
-          <p class=&quot;app-desc&quot;>구글 지도 대신 사용하는 중국 1위 내비게이션. 대중교통·도보·자동차 경로가 정확합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>구글 지도는 중국에서 정상 작동하지 않습니다. 가오더는 현지 데이터가 가장 정확합니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('가오더 지도 Amap','🗺️','amap','#FFF3E0')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank top3">No.3</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/63/e3/d5/63e3d582-eb23-c9e7-6e6e-3edc7fba0f2e/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Amap" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🗺️</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">가오더 지도 Amap</div>
+          <span class="app-tag tag-map">지도</span>
+          <p class="app-desc">구글 지도 대신 사용하는 중국 1위 내비게이션. 대중교통·도보·자동차 경로가 정확합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>구글 지도는 중국에서 정상 작동하지 않습니다. 가오더는 현지 데이터가 가장 정확합니다.</div>
+          <button class="app-dl-btn" onclick="openModal('가오더 지도 Amap','amap')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 4. Baidu Maps -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank&quot;>No.4</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#EEF4FF&quot;>🔵</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>바이두 지도 Baidu Maps</div>
-          <span class=&quot;app-tag tag-map&quot;>지도</span>
-          <p class=&quot;app-desc&quot;>가오더와 함께 쓰이는 중국 대표 지도 앱. 실내 지도, 버스 정류장 정보가 상세합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>가오더가 없거나 특정 지역 정보가 부족할 때 백업으로 설치해두면 좋습니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('바이두 지도 Baidu Maps','🔵','baidu','#EEF4FF')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank">No.4</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/b8/c1/97b8c11e-b8e9-8069-0c2c-274283bf7a33/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Baidu Maps" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🔵</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">바이두 지도 Baidu Maps</div>
+          <span class="app-tag tag-map">지도</span>
+          <p class="app-desc">가오더와 함께 쓰이는 중국 대표 지도 앱. 실내 지도, 버스 정류장 정보가 상세합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>가오더가 없거나 특정 지역 정보가 부족할 때 백업으로 설치해두면 좋습니다.</div>
+          <button class="app-dl-btn" onclick="openModal('바이두 지도 Baidu Maps','baidu')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 5. DiDi -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank&quot;>No.5</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#F3F0FF&quot;>🚕</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>디디 DiDi</div>
-          <span class=&quot;app-tag tag-taxi&quot;>택시</span>
-          <p class=&quot;app-desc&quot;>중국판 카카오T. 앱으로 택시를 호출해 미터 조작 및 부당 요금 청구를 방지합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>중국 길거리 택시는 외국인 바가지 위험이 있습니다. 디디는 앱에 요금이 표시돼 안전합니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('디디 DiDi','🚕','didi','#F3F0FF')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank">No.5</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/19/00/a0/1900a09e-a6fa-8e6e-b187-0b3dff343f3d/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="DiDi" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🚕</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">디디 DiDi</div>
+          <span class="app-tag tag-taxi">택시</span>
+          <p class="app-desc">중국판 카카오T. 앱으로 택시를 호출해 미터 조작 및 부당 요금 청구를 방지합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>중국 길거리 택시는 외국인 바가지 위험이 있습니다. 디디는 앱에 요금이 표시돼 안전합니다.</div>
+          <button class="app-dl-btn" onclick="openModal('디디 DiDi','didi')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 6. Trip.com -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank&quot;>No.6</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#E6F9F1&quot;>✈️</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>트립닷컴 Trip.com</div>
-          <span class=&quot;app-tag tag-travel&quot;>여행</span>
-          <p class=&quot;app-desc&quot;>중국 내 호텔·고속철·항공 예약 전문 앱. 한국어 지원으로 외국인도 쉽게 이용합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>중국 고속철 예약, 현지 호텔 예약이 한 앱에서 가능하고 한국어로 되어 있습니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('트립닷컴 Trip.com','✈️','trip','#E6F9F1')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank">No.6</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/28/c5/42/28c542b5-8e5e-3f0f-c45e-5ea4ed547b3a/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Trip.com" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">✈️</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">트립닷컴 Trip.com</div>
+          <span class="app-tag tag-travel">여행</span>
+          <p class="app-desc">중국 내 호텔·고속철·항공 예약 전문 앱. 한국어 지원으로 외국인도 쉽게 이용합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>중국 고속철 예약, 현지 호텔 예약이 한 앱에서 가능하고 한국어로 되어 있습니다.</div>
+          <button class="app-dl-btn" onclick="openModal('트립닷컴 Trip.com','trip')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 7. Papago -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank&quot;>No.7</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#E8F9F0&quot;>🟢</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>파파고 Papago</div>
-          <span class=&quot;app-tag tag-trans&quot;>번역</span>
-          <p class=&quot;app-desc&quot;>네이버의 한중 번역 앱. 카메라 번역, 대화 번역, 이미지 번역 모두 지원합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>메뉴판, 간판, 현지인과의 대화를 실시간으로 번역해줍니다. 한국어 번역 품질이 가장 좋습니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('파파고 Papago','🟢','papago','#E8F9F0')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank">No.7</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/0c/e1/1f0ce133-e329-3f93-4b15-d3a0a2baf5ce/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Papago" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🟢</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">파파고 Papago</div>
+          <span class="app-tag tag-trans">번역</span>
+          <p class="app-desc">네이버의 한중 번역 앱. 카메라 번역, 대화 번역, 이미지 번역 모두 지원합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>메뉴판, 간판, 현지인과의 대화를 실시간으로 번역해줍니다. 한국어 번역 품질이 가장 좋습니다.</div>
+          <button class="app-dl-btn" onclick="openModal('파파고 Papago','papago')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 8. Google Translate -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank&quot;>No.8</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#FFF8E1&quot;>🔤</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>구글 번역 Google Translate</div>
-          <span class=&quot;app-tag tag-trans&quot;>번역</span>
-          <p class=&quot;app-desc&quot;>오프라인 번역 기능이 강력한 구글 번역. 중국어 번체·간체 모두 지원합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>파파고와 함께 쌍으로 사용 권장. 오프라인 다운로드 기능으로 데이터 없이도 번역 가능합니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('구글 번역 Google Translate','🔤','gtranslate','#FFF8E1')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank">No.8</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/71/b9/86/71b986aa-9f6c-c939-277e-ab3da7a7a35b/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Google Translate" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🔤</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">구글 번역 Google Translate</div>
+          <span class="app-tag tag-trans">번역</span>
+          <p class="app-desc">오프라인 번역 기능이 강력한 구글 번역. 중국어 번체·간체 모두 지원합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>파파고와 함께 쌍으로 사용 권장. 오프라인 다운로드 기능으로 데이터 없이도 번역 가능합니다.</div>
+          <button class="app-dl-btn" onclick="openModal('구글 번역 Google Translate','gtranslate')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 9. Meituan -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank&quot;>No.9</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#FFF0F9&quot;>🛵</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>메이퇀 Meituan</div>
-          <span class=&quot;app-tag tag-food&quot;>음식</span>
-          <p class=&quot;app-desc&quot;>중국 최대 음식 배달·맛집 플랫폼. 숙소에서 배달 주문이나 맛집 예약에 활용합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>호텔 방에서 중국 로컬 음식을 배달시킬 수 있습니다. 가격이 식당보다 저렴한 경우가 많습니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('메이퇀 Meituan','🛵','meituan','#FFF0F9')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank">No.9</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/73/da/3c/73da3c44-b24b-e88e-bcb2-e98e7e6acade/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Meituan" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">🛵</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">메이퇀 Meituan</div>
+          <span class="app-tag tag-food">음식</span>
+          <p class="app-desc">중국 최대 음식 배달·맛집 플랫폼. 숙소에서 배달 주문이나 맛집 예약에 활용합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>호텔 방에서 중국 로컬 음식을 배달시킬 수 있습니다. 가격이 식당보다 저렴한 경우가 많습니다.</div>
+          <button class="app-dl-btn" onclick="openModal('메이퇀 Meituan','meituan')">⬇ 다운로드</button>
         </div>
       </div>
 
       <!-- 10. Dianping -->
-      <div class=&quot;app-card reveal&quot;>
-        <div class=&quot;app-rank&quot;>No.10</div>
-        <div class=&quot;app-icon-wrap&quot; style=&quot;background:#FFF0F0&quot;>⭐</div>
-        <div class=&quot;app-body&quot;>
-          <div class=&quot;app-name&quot;>다중뎬핑 Dianping</div>
-          <span class=&quot;app-tag tag-food&quot;>맛집</span>
-          <p class=&quot;app-desc&quot;>중국판 망고플레이트. 현지인 리뷰 기반으로 신뢰도 높은 맛집 정보를 제공합니다.</p>
-          <div class=&quot;app-why&quot;><strong>🔑 왜 필요한가요?</strong>관광지 주변의 진짜 맛집을 현지인 리뷰로 찾을 수 있습니다. 쿠폰·할인 혜택도 있습니다.</div>
-          <button class=&quot;app-dl-btn&quot; onclick=&quot;openModal('다중뎬핑 Dianping','⭐','dianping','#FFF0F0')&quot;>⬇ 다운로드</button>
+      <div class="app-card reveal">
+        <div class="app-rank">No.10</div>
+        <div class="app-icon-wrap">
+          <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/09/62/25/09622526-4f77-d7c9-5c7e-e0f74be4d0d0/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp" alt="Dianping" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="icon-fallback" style="display:none;align-items:center;justify-content:center;width:100%;height:100%;font-size:1.75rem">⭐</span>
+        </div>
+        <div class="app-body">
+          <div class="app-name">다중뎬핑 Dianping</div>
+          <span class="app-tag tag-food">맛집</span>
+          <p class="app-desc">중국판 망고플레이트. 현지인 리뷰 기반으로 신뢰도 높은 맛집 정보를 제공합니다.</p>
+          <div class="app-why"><strong>🔑 왜 필요한가요?</strong>관광지 주변의 진짜 맛집을 현지인 리뷰로 찾을 수 있습니다. 쿠폰·할인 혜택도 있습니다.</div>
+          <button class="app-dl-btn" onclick="openModal('다중뎬핑 Dianping','dianping')">⬇ 다운로드</button>
         </div>
       </div>
 
@@ -608,322 +513,342 @@ footer{background:var(--dark);padding:48px 24px 36px}
 </section>
 
 <!-- SECTION 3: 한국에서 미리 설치하세요 -->
-<section class=&quot;section section-alt&quot; id=&quot;warning&quot;>
-  <div class=&quot;sec-inner&quot;>
-    <div class=&quot;reveal&quot;>
-      <p class=&quot;sec-label&quot;>⚠️ 중요 안내</p>
-      <h2 class=&quot;sec-title&quot;>꼭 한국에서<br>미리 설치하세요</h2>
-      <p class=&quot;sec-desc&quot;>중국 입국 후 앱 설치는 예상보다 훨씬 어렵습니다.<br>아래 사항을 출국 전에 반드시 확인하세요.</p>
+<section class="section section-alt" id="warning">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">⚠️ 중요 안내</p>
+      <h2 class="sec-title">꼭 한국에서<br>미리 설치하세요</h2>
+      <p class="sec-desc">중국 입국 후 앱 설치는 예상보다 훨씬 어렵습니다.<br>아래 사항을 출국 전에 반드시 확인하세요.</p>
     </div>
-    <div class=&quot;warn-cards reveal&quot;>
-
-      <div class=&quot;warn-card accent&quot;>
-        <div class=&quot;warn-icon&quot;>🚫</div>
+    <div class="warn-cards reveal">
+      <div class="warn-card accent">
+        <div class="warn-icon">🚫</div>
         <h3>VPN은 중국에서 다운로드 불가</h3>
         <p>중국 앱스토어에는 VPN 앱이 없습니다. 반드시 한국에서 설치 후 출국하세요. 현지에서 설치 시도는 시간 낭비입니다.</p>
       </div>
-
-      <div class=&quot;warn-card accent&quot;>
-        <div class=&quot;warn-icon&quot;>💳</div>
+      <div class="warn-card accent">
+        <div class="warn-icon">💳</div>
         <h3>알리페이 카드 등록은 한국에서</h3>
         <p>알리페이 외국인 카드 연결 시 본인 인증 SMS가 한국 번호로 옵니다. 중국 입국 전 카드 등록을 완료하세요.</p>
       </div>
-
-      <div class=&quot;warn-card&quot;>
-        <div class=&quot;warn-icon&quot;>📶</div>
+      <div class="warn-card">
+        <div class="warn-icon">📶</div>
         <h3>eSIM은 출발 전날 개통 권장</h3>
         <p>공항 현장 구매보다 온라인 사전 구매가 저렴하고 빠릅니다. 비행기 탑승 전에 연결 테스트까지 완료하세요.</p>
       </div>
-
-      <div class=&quot;warn-card&quot;>
-        <div class=&quot;warn-icon&quot;>🗺️</div>
+      <div class="warn-card">
+        <div class="warn-icon">🗺️</div>
         <h3>지도 앱 오프라인 다운로드</h3>
         <p>데이터가 불안정한 상황에 대비해 가오더 지도에서 방문 도시의 오프라인 지도를 미리 저장해두세요.</p>
       </div>
-
-      <div class=&quot;warn-card&quot;>
-        <div class=&quot;warn-icon&quot;>🔑</div>
+      <div class="warn-card">
+        <div class="warn-icon">🔑</div>
         <h3>모든 앱 로그인까지 완료</h3>
         <p>설치만으로 부족합니다. 위챗·알리페이·디디 모두 회원가입과 로그인까지 한국에서 완료해야 합니다.</p>
       </div>
-
-      <div class=&quot;warn-card&quot;>
-        <div class=&quot;warn-icon&quot;>💵</div>
+      <div class="warn-card">
+        <div class="warn-icon">💵</div>
         <h3>비상용 현금 소액 준비 필수</h3>
         <p>노점이나 전통시장도 알리페이가 다 통하지만, 가끔 앱 오류나 통신 불량이 발생할 수 있어요. 혹시 모를 비상 상황에 대비해 100위안 정도만 현금으로 챙겨두면 든든해요.</p>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- SECTION 4: 체크리스트 -->
-<section class=&quot;section&quot; id=&quot;checklist&quot;>
-  <div class=&quot;sec-inner&quot;>
-    <div class=&quot;reveal&quot;>
-      <p class=&quot;sec-label&quot;>✅ 인터랙티브 체크리스트</p>
-      <h2 class=&quot;sec-title&quot;>출국 전<br>준비물 체크리스트</h2>
-      <p class=&quot;sec-desc&quot;>항목을 클릭해서 완료 처리하세요.<br>모두 체크하면 중국 여행 준비 완료입니다.</p>
+<section class="section" id="checklist">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">✅ 인터랙티브 체크리스트</p>
+      <h2 class="sec-title">출국 전<br>준비물 체크리스트</h2>
+      <p class="sec-desc">항목을 클릭해서 완료 처리하세요.<br>모두 체크하면 중국 여행 준비 완료입니다.</p>
     </div>
-
-    <div class=&quot;progress-box reveal&quot;>
-      <div class=&quot;progress-top&quot;>
+    <div class="progress-box reveal">
+      <div class="progress-top">
         <span>전체 준비 현황</span>
-        <strong id=&quot;pct&quot;>0%</strong>
+        <strong id="pct">0%</strong>
       </div>
-      <div class=&quot;progress-track&quot;>
-        <div class=&quot;progress-fill&quot; id=&quot;pfill&quot;></div>
+      <div class="progress-track">
+        <div class="progress-fill" id="pfill"></div>
       </div>
-      <p class=&quot;progress-caption&quot; id=&quot;pcap&quot;>아직 체크한 항목이 없습니다. 시작해보세요!</p>
+      <p class="progress-caption" id="pcap">아직 체크한 항목이 없습니다. 시작해보세요!</p>
     </div>
-
-    <div class=&quot;check-groups reveal&quot;>
-
-      <!-- 서류 -->
+    <div class="check-groups reveal">
       <div>
-        <p class=&quot;check-group-label&quot;>📄 기본 서류</p>
-        <div class=&quot;check-items&quot;>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>여권 유효기간 확인</strong><span>잔여 기간 6개월 이상 남아있어야 합니다</span></div>
-            <span class=&quot;check-badge cb-must&quot;>필수</span>
+        <p class="check-group-label">📄 기본 서류</p>
+        <div class="check-items">
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>여권 유효기간 확인</strong><span>잔여 기간 6개월 이상 남아있어야 합니다</span></div>
+            <span class="check-badge cb-must">필수</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>중국 비자 또는 무비자 조건 확인</strong><span>2026년 기준 한국인 무비자 가능 (최대 30일)</span></div>
-            <span class=&quot;check-badge cb-must&quot;>필수</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>중국 비자 또는 무비자 조건 확인</strong><span>2026년 기준 한국인 무비자 가능 (최대 30일)</span></div>
+            <span class="check-badge cb-must">필수</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>항공권·호텔 예약 확인서 출력 또는 저장</strong><span>입국 시 제출 요구될 수 있음</span></div>
-            <span class=&quot;check-badge cb-must&quot;>필수</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>항공권·호텔 예약 확인서 출력 또는 저장</strong><span>입국 시 제출 요구될 수 있음</span></div>
+            <span class="check-badge cb-must">필수</span>
           </div>
         </div>
       </div>
-
-      <!-- 앱 &amp; 인터넷 -->
       <div>
-        <p class=&quot;check-group-label&quot;>📱 앱 &amp; 인터넷</p>
-        <div class=&quot;check-items&quot;>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>알리페이 설치 + 한국 카드 등록</strong><span>외국인 인증 포함 20분 소요, 한국에서 미리 완료</span></div>
-            <span class=&quot;check-badge cb-app&quot;>앱</span>
+        <p class="check-group-label">📱 앱 & 인터넷</p>
+        <div class="check-items">
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>알리페이 설치 + 한국 카드 등록</strong><span>외국인 인증 포함 20분 소요, 한국에서 미리 완료</span></div>
+            <span class="check-badge cb-app">앱</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>VPN 앱 설치 및 작동 테스트</strong><span>중국 내에서는 다운로드 불가 — 반드시 한국에서</span></div>
-            <span class=&quot;check-badge cb-app&quot;>앱</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>VPN 앱 설치 및 작동 테스트</strong><span>중국 내에서는 다운로드 불가 — 반드시 한국에서</span></div>
+            <span class="check-badge cb-app">앱</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>중국 전용 eSIM 구매 및 개통</strong><span>출발 전날 개통 후 연결 테스트까지 완료</span></div>
-            <span class=&quot;check-badge cb-app&quot;>앱</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>중국 전용 eSIM 구매 및 개통</strong><span>출발 전날 개통 후 연결 테스트까지 완료</span></div>
+            <span class="check-badge cb-app">앱</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>디디(DiDi) 설치 및 회원가입</strong><span>한국 번호로 가입 가능, 카드 등록까지</span></div>
-            <span class=&quot;check-badge cb-app&quot;>앱</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>디디(DiDi) 설치 및 회원가입</strong><span>한국 번호로 가입 가능, 카드 등록까지</span></div>
+            <span class="check-badge cb-app">앱</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>가오더 지도 설치 + 오프라인 지도 저장</strong><span>방문 도시 오프라인 지도 다운로드</span></div>
-            <span class=&quot;check-badge cb-app&quot;>앱</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>가오더 지도 설치 + 오프라인 지도 저장</strong><span>방문 도시 오프라인 지도 다운로드</span></div>
+            <span class="check-badge cb-app">앱</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>파파고 / 구글 번역 설치</strong><span>중국어 오프라인 팩 다운로드까지</span></div>
-            <span class=&quot;check-badge cb-app&quot;>앱</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>파파고 / 구글 번역 설치</strong><span>중국어 오프라인 팩 다운로드까지</span></div>
+            <span class="check-badge cb-app">앱</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>위챗(WeChat) 설치 및 로그인</strong><span>현지 가이드·숙소 연락용</span></div>
-            <span class=&quot;check-badge cb-app&quot;>앱</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>위챗(WeChat) 설치 및 로그인</strong><span>현지 가이드·숙소 연락용</span></div>
+            <span class="check-badge cb-app">앱</span>
           </div>
         </div>
       </div>
-
-      <!-- 현지 준비 -->
       <div>
-        <p class=&quot;check-group-label&quot;>🧳 현지 준비물</p>
-        <div class=&quot;check-items&quot;>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>숙소 주소 중국어로 저장</strong><span>택시 기사에게 보여줄 캡처 이미지 준비</span></div>
-            <span class=&quot;check-badge cb-thing&quot;>준비물</span>
+        <p class="check-group-label">🧳 현지 준비물</p>
+        <div class="check-items">
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>숙소 주소 중국어로 저장</strong><span>택시 기사에게 보여줄 캡처 이미지 준비</span></div>
+            <span class="check-badge cb-thing">준비물</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>비상용 위안화 현금 소액 환전</strong><span>어플 및 인터넷 오류 등 비상상황 대비 100위안 권장</span></div>
-            <span class=&quot;check-badge cb-thing&quot;>준비물</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>위안화 현금 소액 환전</strong><span>노점·전통시장 대비 300~500위안 권장</span></div>
+            <span class="check-badge cb-thing">준비물</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>보조배터리 준비 (10,000mAh 이상)</strong><span>중국 관광지는 충전 공간이 부족한 경우 많음</span></div>
-            <span class=&quot;check-badge cb-thing&quot;>준비물</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>보조배터리 준비 (10,000mAh 이상)</strong><span>중국 관광지는 충전 공간이 부족한 경우 많음</span></div>
+            <span class="check-badge cb-thing">준비물</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>여행자 보험 가입</strong><span>의료비가 비싼 편 — 해외여행자보험 필수</span></div>
-            <span class=&quot;check-badge cb-must&quot;>필수</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>여행자 보험 가입</strong><span>의료비가 비싼 편 — 해외여행자보험 필수</span></div>
+            <span class="check-badge cb-must">필수</span>
           </div>
-          <div class=&quot;check-item&quot; onclick=&quot;toggleCheck(this)&quot;>
-            <div class=&quot;check-circle&quot;><svg width=&quot;13&quot; height=&quot;13&quot; viewBox=&quot;0 0 13 13&quot; fill=&quot;none&quot;><path d=&quot;M2 6.5l3 3 6-6&quot; stroke=&quot;white&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;/></svg></div>
-            <div class=&quot;check-text&quot;><strong>한국대사관 긴급 연락처 저장</strong><span>+86-10-8531-0700 (베이징 대사관)</span></div>
-            <span class=&quot;check-badge cb-must&quot;>필수</span>
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="check-circle"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5l3 3 6-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="check-text"><strong>한국대사관 긴급 연락처 저장</strong><span>+86-10-8531-0700 (베이징 대사관)</span></div>
+            <span class="check-badge cb-must">필수</span>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- SECTION 5: 기초회화 -->
-<section class=&quot;section section-alt&quot; id=&quot;phrases&quot;>
-  <div class=&quot;sec-inner&quot;>
-    <div class=&quot;reveal&quot;>
-      <p class=&quot;sec-label&quot;>🗣 기초 중국어</p>
-      <h2 class=&quot;sec-title&quot;>이것만 알아도<br>살아남습니다</h2>
-      <p class=&quot;sec-desc&quot;>외우지 않아도 됩니다. 저장해두고 꺼내 보여주세요.</p>
+<section class="section section-alt" id="phrases">
+  <div class="sec-inner">
+    <div class="reveal">
+      <p class="sec-label">🗣 기초 중국어</p>
+      <h2 class="sec-title">이것만 알아도<br>살아남습니다</h2>
+      <p class="sec-desc">외우지 않아도 됩니다. 저장해두고 꺼내 보여주세요.</p>
     </div>
-
-    <div class=&quot;phrase-tabs reveal&quot;>
-      <button class=&quot;phrase-tab active&quot; onclick=&quot;switchTab(this,'hotel')&quot;>🏨 호텔</button>
-      <button class=&quot;phrase-tab&quot; onclick=&quot;switchTab(this,'restaurant')&quot;>🍜 식당</button>
-      <button class=&quot;phrase-tab&quot; onclick=&quot;switchTab(this,'taxi')&quot;>🚕 택시</button>
-      <button class=&quot;phrase-tab&quot; onclick=&quot;switchTab(this,'payment')&quot;>💳 결제</button>
-      <button class=&quot;phrase-tab&quot; onclick=&quot;switchTab(this,'emergency')&quot;>🆘 응급</button>
-      <button class=&quot;phrase-tab&quot; onclick=&quot;switchTab(this,'directions')&quot;>🗺 길 묻기</button>
+    <div class="phrase-tabs reveal">
+      <button class="phrase-tab active" onclick="switchTab(this,'hotel')">🏨 호텔</button>
+      <button class="phrase-tab" onclick="switchTab(this,'restaurant')">🍜 식당</button>
+      <button class="phrase-tab" onclick="switchTab(this,'taxi')">🚕 택시</button>
+      <button class="phrase-tab" onclick="switchTab(this,'payment')">💳 결제</button>
+      <button class="phrase-tab" onclick="switchTab(this,'emergency')">🆘 응급</button>
+      <button class="phrase-tab" onclick="switchTab(this,'directions')">🗺 길 묻기</button>
     </div>
-
-    <div id=&quot;hotel&quot; class=&quot;phrase-panel active reveal&quot;>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>체크인 부탁드립니다</p><p class=&quot;phrase-cn&quot;>我要办理入住手续</p><p class=&quot;phrase-py&quot;>Wǒ yào bànlǐ rùzhù shǒuxù</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>체크아웃 부탁드립니다</p><p class=&quot;phrase-cn&quot;>我要退房</p><p class=&quot;phrase-py&quot;>Wǒ yào tuì fáng</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>와이파이 비밀번호가 뭔가요?</p><p class=&quot;phrase-cn&quot;>WiFi密码是多少？</p><p class=&quot;phrase-py&quot;>WiFi mìmǎ shì duōshǎo?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>수건을 더 주세요</p><p class=&quot;phrase-cn&quot;>请多给我一条毛巾</p><p class=&quot;phrase-py&quot;>Qǐng duō gěi wǒ yī tiáo máojīn</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
+    <div id="hotel" class="phrase-panel active reveal">
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">체크인 부탁드립니다</p><p class="phrase-cn">我要办理入住手续</p><p class="phrase-py">Wǒ yào bànlǐ rùzhù shǒuxù</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">체크아웃 부탁드립니다</p><p class="phrase-cn">我要退房</p><p class="phrase-py">Wǒ yào tuì fáng</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">와이파이 비밀번호가 뭔가요?</p><p class="phrase-cn">WiFi密码是多少？</p><p class="phrase-py">WiFi mìmǎ shì duōshǎo?</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">수건을 더 주세요</p><p class="phrase-cn">请多给我一条毛巾</p><p class="phrase-py">Qǐng duō gěi wǒ yī tiáo máojīn</p></div><button class="phrase-play">🔊</button></div>
     </div>
-
-    <div id=&quot;restaurant&quot; class=&quot;phrase-panel reveal&quot;>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>이거 주세요 (메뉴 가리키며)</p><p class=&quot;phrase-cn&quot;>我要这个</p><p class=&quot;phrase-py&quot;>Wǒ yào zhège</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>맵지 않게 해 주세요</p><p class=&quot;phrase-cn&quot;>请不要放辣椒</p><p class=&quot;phrase-py&quot;>Qǐng bú yào fàng làjiāo</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>계산서 주세요</p><p class=&quot;phrase-cn&quot;>买单！</p><p class=&quot;phrase-py&quot;>Mǎidān!</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>포장해 주세요</p><p class=&quot;phrase-cn&quot;>打包一下</p><p class=&quot;phrase-py&quot;>Dǎbāo yīxià</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
+    <div id="restaurant" class="phrase-panel reveal">
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">이거 주세요 (메뉴 가리키며)</p><p class="phrase-cn">我要这个</p><p class="phrase-py">Wǒ yào zhège</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">맵지 않게 해 주세요</p><p class="phrase-cn">请不要放辣椒</p><p class="phrase-py">Qǐng bú yào fàng làjiāo</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">계산서 주세요</p><p class="phrase-cn">买单！</p><p class="phrase-py">Mǎidān!</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">포장해 주세요</p><p class="phrase-cn">打包一下</p><p class="phrase-py">Dǎbāo yīxià</p></div><button class="phrase-play">🔊</button></div>
     </div>
-
-    <div id=&quot;taxi&quot; class=&quot;phrase-panel reveal&quot;>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>이 주소로 가 주세요</p><p class=&quot;phrase-cn&quot;>请带我去这个地址</p><p class=&quot;phrase-py&quot;>Qǐng dài wǒ qù zhège dìzhǐ</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>미터기로 가 주세요</p><p class=&quot;phrase-cn&quot;>请打表</p><p class=&quot;phrase-py&quot;>Qǐng dǎ biǎo</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>여기서 세워 주세요</p><p class=&quot;phrase-cn&quot;>在这里停车</p><p class=&quot;phrase-py&quot;>Zài zhèlǐ tíng chē</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>얼마예요?</p><p class=&quot;phrase-cn&quot;>多少钱？</p><p class=&quot;phrase-py&quot;>Duōshǎo qián?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
+    <div id="taxi" class="phrase-panel reveal">
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">이 주소로 가 주세요</p><p class="phrase-cn">请带我去这个地址</p><p class="phrase-py">Qǐng dài wǒ qù zhège dìzhǐ</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">미터기로 가 주세요</p><p class="phrase-cn">请打表</p><p class="phrase-py">Qǐng dǎ biǎo</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">여기서 세워 주세요</p><p class="phrase-cn">在这里停车</p><p class="phrase-py">Zài zhèlǐ tíng chē</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">얼마예요?</p><p class="phrase-cn">多少钱？</p><p class="phrase-py">Duōshǎo qián?</p></div><button class="phrase-play">🔊</button></div>
     </div>
-
-    <div id=&quot;payment&quot; class=&quot;phrase-panel reveal&quot;>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>알리페이로 결제할게요</p><p class=&quot;phrase-cn&quot;>我用支付宝付款</p><p class=&quot;phrase-py&quot;>Wǒ yòng Zhīfùbǎo fùkuǎn</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>영수증 주세요</p><p class=&quot;phrase-cn&quot;>请给我收据</p><p class=&quot;phrase-py&quot;>Qǐng gěi wǒ shōujù</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>할인되나요?</p><p class=&quot;phrase-cn&quot;>可以打折吗？</p><p class=&quot;phrase-py&quot;>Kěyǐ dǎzhé ma?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>카드 결제 되나요?</p><p class=&quot;phrase-cn&quot;>可以刷卡吗？</p><p class=&quot;phrase-py&quot;>Kěyǐ shuā kǎ ma?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
+    <div id="payment" class="phrase-panel reveal">
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">알리페이로 결제할게요</p><p class="phrase-cn">我用支付宝付款</p><p class="phrase-py">Wǒ yòng Zhīfùbǎo fùkuǎn</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">영수증 주세요</p><p class="phrase-cn">请给我收据</p><p class="phrase-py">Qǐng gěi wǒ shōujù</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">할인되나요?</p><p class="phrase-cn">可以打折吗？</p><p class="phrase-py">Kěyǐ dǎzhé ma?</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">카드 결제 되나요?</p><p class="phrase-cn">可以刷卡吗？</p><p class="phrase-py">Kěyǐ shuā kǎ ma?</p></div><button class="phrase-play">🔊</button></div>
     </div>
-
-    <div id=&quot;emergency&quot; class=&quot;phrase-panel reveal&quot;>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>도와주세요!</p><p class=&quot;phrase-cn&quot;>救命！ / 帮帮我！</p><p class=&quot;phrase-py&quot;>Jiùmìng! / Bāngbāng wǒ!</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>병원에 가야 합니다</p><p class=&quot;phrase-cn&quot;>我需要去医院</p><p class=&quot;phrase-py&quot;>Wǒ xūyào qù yīyuàn</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>경찰을 불러 주세요</p><p class=&quot;phrase-cn&quot;>请叫警察</p><p class=&quot;phrase-py&quot;>Qǐng jiào jǐngchá</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>화장실이 어디인가요?</p><p class=&quot;phrase-cn&quot;>洗手间在哪里？</p><p class=&quot;phrase-py&quot;>Xǐshǒujiān zài nǎlǐ?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
+    <div id="emergency" class="phrase-panel reveal">
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">도와주세요!</p><p class="phrase-cn">救命！ / 帮帮我！</p><p class="phrase-py">Jiùmìng! / Bāngbāng wǒ!</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">병원에 가야 합니다</p><p class="phrase-cn">我需要去医院</p><p class="phrase-py">Wǒ xūyào qù yīyuàn</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">경찰을 불러 주세요</p><p class="phrase-cn">请叫警察</p><p class="phrase-py">Qǐng jiào jǐngchá</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">화장실이 어디인가요?</p><p class="phrase-cn">洗手间在哪里？</p><p class="phrase-py">Xǐshǒujiān zài nǎlǐ?</p></div><button class="phrase-play">🔊</button></div>
     </div>
-
-    <div id=&quot;directions&quot; class=&quot;phrase-panel reveal&quot;>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>여기가 어디인가요?</p><p class=&quot;phrase-cn&quot;>这里是哪里？</p><p class=&quot;phrase-py&quot;>Zhèlǐ shì nǎlǐ?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>지하철역이 어디인가요?</p><p class=&quot;phrase-cn&quot;>地铁站在哪里？</p><p class=&quot;phrase-py&quot;>Dìtiě zhàn zài nǎlǐ?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>걸어서 얼마나 걸리나요?</p><p class=&quot;phrase-cn&quot;>步行要多久？</p><p class=&quot;phrase-py&quot;>Bùxíng yào duō jiǔ?</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
-      <div class=&quot;phrase-card&quot;><div class=&quot;phrase-body&quot;><p class=&quot;phrase-kr&quot;>왼쪽 / 오른쪽으로 가세요</p><p class=&quot;phrase-cn&quot;>往左走 / 往右走</p><p class=&quot;phrase-py&quot;>Wǎng zuǒ zǒu / Wǎng yòu zǒu</p></div><button class=&quot;phrase-play&quot;>🔊</button></div>
+    <div id="directions" class="phrase-panel reveal">
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">여기가 어디인가요?</p><p class="phrase-cn">这里是哪里？</p><p class="phrase-py">Zhèlǐ shì nǎlǐ?</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">지하철역이 어디인가요?</p><p class="phrase-cn">地铁站在哪里？</p><p class="phrase-py">Dìtiě zhàn zài nǎlǐ?</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">걸어서 얼마나 걸리나요?</p><p class="phrase-cn">步行要多久？</p><p class="phrase-py">Bùxíng yào duō jiǔ?</p></div><button class="phrase-play">🔊</button></div>
+      <div class="phrase-card"><div class="phrase-body"><p class="phrase-kr">왼쪽 / 오른쪽으로 가세요</p><p class="phrase-cn">往左走 / 往右走</p><p class="phrase-py">Wǎng zuǒ zǒu / Wǎng yòu zǒu</p></div><button class="phrase-play">🔊</button></div>
     </div>
-
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class=&quot;footer-inner&quot;>
-    <div class=&quot;footer-logo&quot;>바로차이나</div>
-    <p class=&quot;footer-tagline&quot;>중국 여행 준비, 여기 하나면 끝 — 무료 · </p>
-    <div class=&quot;footer-grid&quot;>
-      <div class=&quot;footer-col&quot;>
+  <div class="footer-inner">
+    <div class="footer-logo">바로차이나</div>
+    <p class="footer-tagline">중국 여행 준비, 여기 하나면 끝 — 무료</p>
+    <div class="footer-grid">
+      <div class="footer-col">
         <h4>주요 가이드</h4>
-        <a href=&quot;#&quot;>출국 전 체크리스트</a>
-        <a href=&quot;#&quot;>필수앱 TOP10</a>
-        <a href=&quot;#&quot;>알리페이 등록 방법</a>
-        <a href=&quot;#&quot;>VPN 가이드</a>
-        <a href=&quot;#&quot;>eSIM 추천</a>
+        <a href="#">출국 전 체크리스트</a>
+        <a href="#">필수앱 TOP10</a>
+        <a href="#">알리페이 등록 방법</a>
+        <a href="#">VPN 가이드</a>
+        <a href="#">eSIM 추천</a>
       </div>
-      <div class=&quot;footer-col&quot;>
+      <div class="footer-col">
         <h4>지역별 안내 (업데이트 예정)</h4>
-        <a href=&quot;#&quot;>상하이</a>
-        <a href=&quot;#&quot;>베이징</a>
-        <a href=&quot;#&quot;>충칭</a>
-        <a href=&quot;#&quot;>장가계</a>
-        <a href=&quot;#&quot;>청두</a>
+        <a href="#">상하이</a>
+        <a href="#">베이징</a>
+        <a href="#">충칭</a>
+        <a href="#">장가계</a>
+        <a href="#">청두</a>
       </div>
-      <div class=&quot;footer-col&quot;>
+      <div class="footer-col">
         <h4>안내</h4>
-        <a href=&quot;#&quot;>FAQ</a>
-        <a href=&quot;#&quot;>문의하기 baro.china.kr@gmail.com </a>
-        <a href=&quot;#&quot;>공지사항</a>
-        <a href=&quot;#&quot;>개인정보처리방침</a>
+        <a href="#">FAQ</a>
+        <a href="mailto:baro.china.kr@gmail.com">문의하기 baro.china.kr@gmail.com</a>
+        <a href="#">공지사항</a>
+        <a href="#">개인정보처리방침</a>
       </div>
     </div>
-    <div class=&quot;footer-bottom&quot;>
+    <div class="footer-bottom">
       <p>© 2026 바로차이나. 정보 오류 신고 환영합니다.</p>
-      <p class=&quot;footer-update&quot;>최근 업데이트: 2026년 6월</p>
+      <p class="footer-update">최근 업데이트: 2026년 6월</p>
     </div>
   </div>
 </footer>
 
 <!-- DOWNLOAD MODAL -->
-<div class=&quot;modal-overlay&quot; id=&quot;dlModal&quot; onclick=&quot;closeModalOutside(event)&quot;>
-  <div class=&quot;modal-sheet&quot;>
-    <div class=&quot;modal-handle&quot;></div>
-    <div class=&quot;modal-app-info&quot;>
-      <div class=&quot;modal-app-icon&quot; id=&quot;mIcon&quot; style=&quot;background:#EEF4FF&quot;>💙</div>
+<div class="modal-overlay" id="dlModal" onclick="closeModalOutside(event)">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-app-info">
+      <div class="modal-app-icon">
+        <img id="mIconImg" src="" alt="앱 아이콘"/>
+      </div>
       <div>
-        <p class=&quot;modal-app-name&quot; id=&quot;mName&quot;>앱 이름</p>
-        <p class=&quot;modal-app-sub&quot;>다운로드 플랫폼을 선택하세요</p>
+        <p class="modal-app-name" id="mName">앱 이름</p>
+        <p class="modal-app-sub">다운로드 플랫폼을 선택하세요</p>
       </div>
     </div>
-    <div class=&quot;modal-btns&quot;>
-      <a class=&quot;modal-dl-ios&quot; id=&quot;mIosBtn&quot; href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>
+    <div class="modal-btns">
+      <a class="modal-dl-ios" id="mIosBtn" href="#" target="_blank" rel="noopener noreferrer">
         🍎 App Store (iOS)
       </a>
-      <a class=&quot;modal-dl-android&quot; id=&quot;mAndBtn&quot; href=&quot;#&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>
+      <a class="modal-dl-android" id="mAndBtn" href="#" target="_blank" rel="noopener noreferrer">
         🤖 Google Play (Android)
       </a>
     </div>
-    <button class=&quot;modal-close&quot; onclick=&quot;closeModal()&quot;>닫기</button>
+    <button class="modal-close" onclick="closeModal()">닫기</button>
   </div>
 </div>
 
 <script>
-/* ── APP STORE LINKS ── */
-const appLinks = {
-  alipay:     { ios:'https://apps.apple.com/kr/app/alipay/id333206289', android:'https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone' },
-  wechat:     { ios:'https://apps.apple.com/kr/app/wechat/id414478124', android:'https://play.google.com/store/apps/details?id=com.tencent.mm' },
-  amap:       { ios:'https://apps.apple.com/kr/app/amap/id461703208',   android:'https://play.google.com/store/apps/details?id=com.autonavi.minimap' },
-  baidu:      { ios:'https://apps.apple.com/kr/app/baidu-maps/id452186370', android:'https://play.google.com/store/apps/details?id=com.baidu.BaiduMap' },
-  didi:       { ios:'https://apps.apple.com/kr/app/didi/id1337925578',  android:'https://play.google.com/store/apps/details?id=com.sdu.didi.gsui' },
-  trip:       { ios:'https://apps.apple.com/kr/app/trip-com/id681752345', android:'https://play.google.com/store/apps/details?id=ctrip.english' },
-  papago:     { ios:'https://apps.apple.com/kr/app/papago/id1147874819', android:'https://play.google.com/store/apps/details?id=com.naver.labs.translator' },
-  gtranslate: { ios:'https://apps.apple.com/kr/app/google-translate/id414706506', android:'https://play.google.com/store/apps/details?id=com.google.android.apps.translate' },
-  meituan:    { ios:'https://apps.apple.com/cn/app/id423084029',        android:'https://play.google.com/store/apps/details?id=com.sankuai.meituan' },
-  dianping:   { ios:'https://apps.apple.com/cn/app/id351091731',        android:'https://play.google.com/store/apps/details?id=com.dianping.v1' },
+/* ── APP DATA ── */
+const APP_DATA = {
+  alipay: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/3e/6c/003e6c5d-0f71-7d48-ade1-ecd9ca571448/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/kr/app/alipay/id333206289',
+    android: 'https://play.google.com/store/apps/details?id=com.eg.android.AlipayGphone'
+  },
+  wechat: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/68/9e/f8/689ef8f8-365f-bd3e-21a4-9e9e745498b9/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/kr/app/wechat/id414478124',
+    android: 'https://play.google.com/store/apps/details?id=com.tencent.mm'
+  },
+  amap: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/63/e3/d5/63e3d582-eb23-c9e7-6e6e-3edc7fba0f2e/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/kr/app/amap/id461703208',
+    android: 'https://play.google.com/store/apps/details?id=com.autonavi.minimap'
+  },
+  baidu: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/b8/c1/97b8c11e-b8e9-8069-0c2c-274283bf7a33/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/kr/app/baidu-maps/id452186370',
+    android: 'https://play.google.com/store/apps/details?id=com.baidu.BaiduMap'
+  },
+  didi: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/19/00/a0/1900a09e-a6fa-8e6e-b187-0b3dff343f3d/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/us/app/didi-get-a-ride/id1437183972',
+    android: 'https://play.google.com/store/apps/details?id=com.didiglobal.passenger'
+  },
+  trip: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/28/c5/42/28c542b5-8e5e-3f0f-c45e-5ea4ed547b3a/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/kr/app/trip-com/id681752345',
+    android: 'https://play.google.com/store/apps/details?id=ctrip.english'
+  },
+  papago: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/0c/e1/1f0ce133-e329-3f93-4b15-d3a0a2baf5ce/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/kr/app/papago/id1147874819',
+    android: 'https://play.google.com/store/apps/details?id=com.naver.labs.translator'
+  },
+  gtranslate: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/71/b9/86/71b986aa-9f6c-c939-277e-ab3da7a7a35b/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/kr/app/google-translate/id414706506',
+    android: 'https://play.google.com/store/apps/details?id=com.google.android.apps.translate'
+  },
+  meituan: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/73/da/3c/73da3c44-b24b-e88e-bcb2-e98e7e6acade/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/cn/app/id423084029',
+    android: 'https://play.google.com/store/apps/details?id=com.sankuai.meituan'
+  },
+  dianping: {
+    icon: 'https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/09/62/25/09622526-4f77-d7c9-5c7e-e0f74be4d0d0/AppIcon-0-0-1x_U007epad-0-0-0-85-220.png/230x0w.webp',
+    ios: 'https://apps.apple.com/cn/app/id351091731',
+    android: 'https://play.google.com/store/apps/details?id=com.dianping.v1'
+  }
 };
 
-function openModal(name, icon, key, bg) {
+/* ── MODAL ── */
+function openModal(name, key) {
+  const d = APP_DATA[key] || {};
   document.getElementById('mName').textContent = name;
-  document.getElementById('mIcon').textContent = icon;
-  document.getElementById('mIcon').style.background = bg;
-  const links = appLinks[key] || { ios:'#', android:'#' };
-  document.getElementById('mIosBtn').href = links.ios;
-  document.getElementById('mAndBtn').href = links.android;
+  const img = document.getElementById('mIconImg');
+  img.src = d.icon || '';
+  img.alt = name;
+  document.getElementById('mIosBtn').href = d.ios || '#';
+  document.getElementById('mAndBtn').href = d.android || '#';
   document.getElementById('dlModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -939,9 +864,6 @@ function closeModalOutside(e) {
 const TOTAL_CHECKS = document.querySelectorAll('.check-item').length;
 function toggleCheck(el) {
   el.classList.toggle('checked');
-  updateProgress();
-}
-function updateProgress() {
   const done = document.querySelectorAll('.check-item.checked').length;
   const pct = Math.round(done / TOTAL_CHECKS * 100);
   document.getElementById('pct').textContent = pct + '%';
@@ -963,11 +885,13 @@ function switchTab(btn, panelId) {
 
 /* ── SCROLL REVEAL ── */
 const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); ro.unobserve(e.target); } });
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('show'); ro.unobserve(e.target); }
+  });
 }, { threshold: 0.07 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-/* ── HELPER ── */
+/* ── SMOOTH SCROLL ── */
 function scrollToId(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -975,19 +899,5 @@ function scrollToId(id) {
 </script>
 </body>
 </html>
-"
-      onload="document.getElementById('loader').classList.add('done')"
-    ></iframe>
-  </div>
-</div>
-
-<script>
-function setVP(mode, btn) {
-  document.querySelectorAll('.vp').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  document.getElementById('wrapper').className = 'wrapper ' + mode;
-  document.getElementById('stage').className = 'stage ' + (mode === 'mobile' ? 'bg-dark' : 'bg-mid');
-}
-</script>
-</body>
-</html>
+HTMLEOF
+echo "Done: $(wc -c < /mnt/user-data/outputs/index.html) bytes"
